@@ -1,0 +1,34 @@
+﻿services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8082:80"          # http://localhost:8082
+    volumes:
+      - ./:/var/www/html   # on monte la RACINE du repo
+    depends_on:
+      - db
+
+  db:
+    image: mariadb:${MARIADB_TAG}
+    environment:
+      - MARIADB_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MARIADB_DATABASE=${MYSQL_DATABASE}
+      - MARIADB_USER=${MYSQL_USER}
+      - MARIADB_PASSWORD=${MYSQL_PASSWORD}
+    volumes:
+      - db_data:/var/lib/mysql
+
+  pma:
+    image: phpmyadmin:${PHPMYADMIN_TAG}
+    depends_on:
+      - db
+    environment:
+      - PMA_HOST=db
+      - PMA_ARBITRARY=1
+    ports:
+      - "8083:80"          # http://localhost:8083
+
+volumes:
+  db_data:

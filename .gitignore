@@ -1,0 +1,22 @@
+﻿# Secrets
+.env
+.env.local
+*.env.local
+
+# DB / dumps / logs
+/db_data/
+*.sql
+*.sqlite
+*.log
+
+# PHP / tools
+/vendor/
+composer.lock
+node_modules/
+coverage/
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

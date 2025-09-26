@@ -1,5 +1,12 @@
 ﻿FROM php:8.2-apache
-RUN a2enmod rewrite
-RUN docker-php-ext-install pdo pdo_mysql
-# Activer le vhost public/ si présent (Cas B). Si le fichier n'existe pas, commente cette ligne.
-# COPY apache-vhost.conf /etc/apache2/sites-available/000-default.conf
+
+# Extensions PHP nécessaires
+RUN apt-get update \
+  && apt-get install -y --no-install-recommends \
+     git unzip zlib1g-dev libzip-dev \
+  && docker-php-ext-install pdo pdo_mysql zip \
+  && rm -rf /var/lib/apt/lists/*
+
+# Composer (binaire officiel)
+COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
+

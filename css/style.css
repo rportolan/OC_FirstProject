@@ -100,7 +100,7 @@ footer {
     max-width: 470px;
 }
 
-form {
+#formAdd {
     max-width: 500px;
     margin: auto;
     display: flex;
@@ -114,15 +114,15 @@ form {
     margin-bottom: 25px;
 }
 
-form input, form textarea {
+#formAdd input, form textarea {
     padding: 7px;
 }
 
-form textarea {
+#formAdd textarea {
     height: 150px;
 }
 
-input[type="submit"] {
+#submitForm {
     margin: auto;
     color: white;
     background: black;
@@ -132,7 +132,16 @@ input[type="submit"] {
     font-size: 15px;
     padding: 7px;
 }
-
+#inputSupprimerOeuvre{
+    border: 1px solid rgb(239, 54, 54);
+    padding: 5px 10px;
+    border-radius: 15px;
+    color: rgb(239, 54, 54);
+    background-color: rgba(228, 78, 78, 0.158);
+}
+#inputSupprimerOeuvre:hover{
+    background-color: rgba(228, 78, 78, 0.39);
+}
 
 @media (max-width: 850px) {
     .oeuvre {
